@@ -7,7 +7,7 @@
 {% for post in object_list %}
     <a href="{% url 'blogdetail' post.pk %}"><li>{{post.title}}</li></a>
     by - {{post.author}} <br>
-    {{post.body}} <br><br>  
+    {{post.body |truncatechars:9}} <br><br>  <!--{{value |truncatechars:9 }}truncate text excluding 9 character-->
 {% endfor %}
 </ul>
 
