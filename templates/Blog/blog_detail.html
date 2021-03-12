@@ -4,7 +4,9 @@
 
 
 <h1>{{ post.title }}</h1>
-<small>by : {{post.author}}</small><a class="btn btn-secondary" href="{% url 'updatePost' post.pk %}">Edit</a>
+<small>by : {{post.author}}</small>
+<a class="btn btn-secondary" href="{% url 'updatePost' post.pk %}">Edit</a>
+<a class="btn btn-danger" href="{% url 'deletePost' post.pk %}">Delete</a>
 <hr>
 {{post.body}}
 <br><br>
