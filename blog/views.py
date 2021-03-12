@@ -1,8 +1,8 @@
 from blog.models import Post
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post
-from .forms import CreatePostForm
+from .forms import CreatePostForm, EditPostForm
 
 #def blogHome(request):
 #    return render(request, 'blog_home.html', {})
@@ -21,3 +21,9 @@ class CreatePostView(CreateView):
     template_name = 'create_blog_post.html'
     # fields = '__all__' # this line of code display all the fields that are defined in models.py
     # fields = ('title', 'body') # this is to choose the fields to be displayed induvidualy from models.py
+
+class UpdatePostView(UpdateView):
+    model = Post
+    form_class = EditPostForm
+    template_name = 'update_blog_post.html'
+    # fields = ['title', 'body']

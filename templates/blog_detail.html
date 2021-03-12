@@ -4,7 +4,7 @@
 
 
 <h1>{{ post.title }}</h1>
-<small>by : {{post.author}}</small>
+<small>by : {{post.author}}</small><a class="btn btn-secondary" href="{% url 'updatePost' post.pk %}">Edit</a>
 <hr>
 {{post.body}}
 <br><br>

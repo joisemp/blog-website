@@ -11,5 +11,5 @@ class Post(models.Model):
         return self.title+' | '+str(self.author)
 
     def get_absolute_url(self):
-        # return reverse('blogdetail', args=(str(self.id))) # to return to the post created in detailview after clicking on post button
-        return reverse('bloghome') # to return to the blog home page after clicking on post button
+        return reverse('blogdetail', args=(str(self.id))) # to return to the post created in detailview after clicking on post button
+        # return reverse('bloghome') # to return to the blog home page after clicking on post button
