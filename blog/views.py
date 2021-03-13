@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 class BlogHomeView(ListView):
     model = Post
     template_name = 'Blog/blog_home.html'
-    ordering = ['-post_time']
+    ordering = ['-post_date','-post_time']
     # ordering = ['-id'] # This is to order the post by id but it is not efficient everytime so we can you date and time
 
 class BlogDetailView(DetailView):
