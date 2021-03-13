@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<h1>{{ post.title }}</h1>
+<h1>{{ post.title }}</h1> <small>Posted on - </small>{{post.post_date}} <br><br>
 <small>by : {{post.author}}</small>
 <a class="btn btn-secondary" href="{% url 'updatePost' post.pk %}">Edit</a>
 <a class="btn btn-danger" href="{% url 'deletePost' post.pk %}">Delete</a>

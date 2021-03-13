@@ -9,7 +9,7 @@
     by - {{post.author}} -
     <a href="{% url 'updatePost' post.pk %}">Edit</a>
     <a href="{% url 'deletePost' post.pk %}">Delete</a> 
-    <br>
+    <br><small>Posted on - {{post.post_date}} at {{post.post_time}} </small><br>
     {{post.body |truncatechars:9}} <br><br>  <!--{{value |truncatechars:9 }}truncate text excluding 9 character-->
 {% endfor %}
 </ul>
