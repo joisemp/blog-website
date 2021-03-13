@@ -16,3 +16,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         #return reverse('blogdetail', args=(str(self.id)) # to return to the post created in detailview after clicking on post button
         return reverse('bloghome') # to return to the blog home page after clicking on post button
+
+class LandingPage(models.Model): 
+    title = models.CharField(max_length=255)
+    body = models.TextField()

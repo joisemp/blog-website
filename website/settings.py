@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'members',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,7 @@ USE_TZ = True
 STATIC_DIR = os.path.join(BASE_DIR, 'Public')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR]
+
+
+LOGIN_REDIRECT_URL = 'bloghome'
+LOGOUT_REDIRECT_URL = 'landingpage'
