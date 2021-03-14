@@ -2,17 +2,20 @@
 {% block title %}Delete blog post{%endblock%}
 {% block content %}
 
-<h1>Delete Blog Post</h1>
-<br><br>
-<h3>Delete : {{post.title}}</h3>
-<br>
-<form method="POST">
-    <div class="form-group">
-    {% csrf_token %}
-    <strong>Are you sure?</strong><br><br>
-    <button class="btn btn-secondary">Delete</button>
-</div>
-</form>
-
+{% if user.is_authenticated %}
+    <h1>Delete Blog Post</h1>
+    <br><br>
+    <h3>Delete : {{post.title}}</h3>
+    <br>
+    <form method="POST">
+        <div class="form-group">
+        {% csrf_token %}
+        <strong>Are you sure?</strong><br><br>
+        <button class="btn btn-outline-danger">Delete</button>
+    </div>
+    </form>
+{% else %}
+    <h2>Please login to Delete a Post</h2>
+{% endif %}
 
 {%endblock%}
