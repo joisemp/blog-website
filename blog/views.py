@@ -1,7 +1,7 @@
 from blog.models import Post
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from .models import Post, LandingPage
+from .models import Category, Post, LandingPage
 from .forms import CreatePostForm, EditPostForm
 from django.urls import reverse_lazy
 #def blogHome(request):
@@ -37,3 +37,8 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_blog_post.html'
     success_url = reverse_lazy('bloghome')
+
+class CreateCategoryView(CreateView):
+    model = Category
+    template_name = 'add_category.html'
+    fields = '__all__'

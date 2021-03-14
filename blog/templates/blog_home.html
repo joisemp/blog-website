@@ -6,6 +6,7 @@
 <ul>
 {% for post in object_list %}
     <a href="{% url 'blogdetail' post.pk %}"><li>{{post.title}}</li></a>
+    ({{ post.category }}) ||  
     by - {{post.author}}
 
     {% if user.is_authenticated %}
