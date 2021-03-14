@@ -6,6 +6,7 @@ from .forms import CreatePostForm, EditPostForm
 from django.urls import reverse_lazy
 #def blogHome(request):
 #    return render(request, 'blog_home.html', {})
+
 class LandingPageView(TemplateView):
     model = LandingPage
     template_name = 'landing_page.html'
@@ -42,3 +43,7 @@ class CreateCategoryView(CreateView):
     model = Category
     template_name = 'add_category.html'
     fields = '__all__'
+
+def CategoryView(request, category_name):
+    category_posts = Post.objects.filter(category = category_name)
+    return render(request, 'categories.html', {'category_posts':category_posts, 'category_name':category_name.title()})

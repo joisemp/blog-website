@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{category_name}} Category{%endblock%}
+{% block content %}
+
+{% if category_posts %}
+
+    <h1>{{category_name}} Category</h1>
+
+    {% for post in category_posts %}
+        <a href="{% url 'blogdetail' post.pk %}"><li>{{post.title}}</li></a>
+        by - {{post.author}}
+
+        {% if user.is_authenticated %}
+            - <a href="{% url 'updatePost' post.pk %}">( Edit )</a>
+            <a href="{% url 'deletePost' post.pk %}">( Delete )</a>
+        {% endif %}
+
+        <br><small>Posted on - {{post.post_date}} at {{post.post_time}} </small><br>
+        {{post.body | truncatechars:9 | safe}} <br><br>  <!--{{value |truncatechars:9 }}truncate text excluding 9 character-->
+
+    {% endfor %}
+
+{% else %}
+    <h1>Sorry There is no post under {{category_name}} Category</h1>
+{% endif %}
+
+{%endblock%}
