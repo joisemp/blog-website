@@ -13,6 +13,13 @@
         <button class="btn btn-secondary">Post</button>
     </div>
     </form>
+
+<!--javascript code to render the user name from the frontend to the backend to determine the user-->
+    <script>
+        var name = "{{user.id}}"; //we can use django code inside javascript too...
+        document.getElementById("postCreator").value = name; //The Text area element in CreatePostForm in forms.py has the id postCreator.
+    </script>
+
 {% else %}
     <h2>Please login to Create a Post</h2>
 {% endif %}

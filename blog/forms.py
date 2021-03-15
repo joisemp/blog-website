@@ -12,7 +12,8 @@ class CreatePostForm(forms.ModelForm):
         fields = ('title', 'author', 'category', 'body')
         widgets = {
             'title':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Type your title'}),
-            'author':forms.Select(attrs={'class':'form-control'}),
+            'author':forms.TextInput(attrs={'class':'form-control', 'value':'', 'id':'postCreator', 'type':'hidden'}), # This is the author input. The value is automatically entered useing javascript in the front end and the text box is hidden so that the user can't edit it.,
+            # 'author':forms.Select(attrs={'class':'form-control'}), # This is a select field to select users. we cannot use this so we use the text field which is hidden and gives the user value automatically.
             'category':forms.Select(choices = category_choice_list ,attrs={'class':'form-control'}),
             'body':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Type your blog here'}),            
         }
