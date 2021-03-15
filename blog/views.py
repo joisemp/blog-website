@@ -17,6 +17,12 @@ class BlogHomeView(ListView):
     ordering = ['-post_date','-post_time']
     # ordering = ['-id'] # This is to order the post by id but it is not efficient everytime so we can you date and time
 
+    def get_context_data(self, *args, **kwargs):
+        category_menu = Category.objects.all()
+        context = super(BlogHomeView, self).get_context_data(*args, **kwargs)
+        context['category_menu'] = category_menu
+        return context
+
 class BlogDetailView(DetailView):
     model = Post
     template_name = 'blog_detail.html'
@@ -47,3 +53,7 @@ class CreateCategoryView(CreateView):
 def CategoryView(request, category_name):
     category_posts = Post.objects.filter(category = category_name)
     return render(request, 'categories.html', {'category_posts':category_posts, 'category_name':category_name.title()})
+
+def CategoryListView(request):
+    category_menu_list = Category.objects.all()
+    return render(request, 'categories_list.html', {'category_menu_list': category_menu_list})
