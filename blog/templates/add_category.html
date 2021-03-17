@@ -1,8 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'Navbars/base_nav.html' %}
 {% block title %}Create blog Category{%endblock%}
-{% block content %}
+{% block items %}
 
-{% if user.is_authenticated %}
+{% if user.is_superuser %}
     <h1>Add Category</h1>
 
     <br><br>
@@ -14,7 +14,13 @@
     </div>
     </form>
 {% else %}
-    <h2>Please login to Add a Category</h2>
+    <h2>Only Super Users Access</h2>
+    <h3>You are seeing this page maybe because of the following reasons :</h3>
+    <ol>
+        <li>You are not a super user</li>
+        <li>If you are a super user then check wether you have logged in the correct accout</li>
+        <li>If issues occuring please contact us</li>
+    </ol>
 {% endif %}
 
 {%endblock%}

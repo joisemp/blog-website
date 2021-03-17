@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'Navbars/base_nav.html' %}
 {% block title %}Delete blog post{%endblock%}
-{% block content %}
+{% block items %}
 
 {% if user.is_authenticated %}
     {% if user.id == post.author.id %}
