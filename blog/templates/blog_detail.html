@@ -16,4 +16,12 @@
 <br><br>
 <a class="btn btn-outline-secondary" href="{% url 'bloghome' %}">Back</a>
 
+<br><br>
+<hr>
+<br>
+<form action="{% url 'like_post' post.pk %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" name="post_id", value="{{ post.id }}", class="btn btn-outline-primary btn-sm">Like</button>{{ total_likes }} Likes
+</form>
+
 {%endblock%}

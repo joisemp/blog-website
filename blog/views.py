@@ -1,9 +1,10 @@
 from blog.models import Post
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from .models import Category, Post, LandingPage
 from .forms import CreatePostForm, EditPostForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 #def blogHome(request):
 #    return render(request, 'blog_home.html', {})
 
@@ -26,6 +27,13 @@ class BlogHomeView(ListView):
 class BlogDetailView(DetailView):
     model = Post
     template_name = 'blog_detail.html'
+
+    def get_context_data(self, *args, **kwargs):
+        likes_count = get_object_or_404(Post, id=self.kwargs['pk'])
+        total_likes = likes_count.total_likes()
+        context = super(BlogDetailView, self).get_context_data(*args, **kwargs)
+        context['total_likes'] = total_likes
+        return context
 
 class CreatePostView(CreateView):
     model = Post
@@ -57,3 +65,8 @@ def CategoryView(request, category_name):
 def CategoryListView(request):
     category_menu_list = Category.objects.all()
     return render(request, 'categories_list.html', {'category_menu_list': category_menu_list})
+
+def LikeView(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('blogdetail', args=[str(pk)]))
