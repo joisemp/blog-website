@@ -1,0 +1,23 @@
+{% extends 'Navbars/blog_nav.html' %}
+{% block title %}Edit Pofile{%endblock%}
+{% block items %}
+
+<style>
+    #id_password{
+        display: none;
+    }
+</style>
+
+<h1>Edit Pofile</h1>
+
+<br><br>
+<form method="POST">
+    <div class="form-group">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-secondary">Update</button>
+</div>
+</form>
+
+
+{% endblock %}
