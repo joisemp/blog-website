@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'members',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,11 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 LOGIN_REDIRECT_URL = 'bloghome'
 LOGOUT_REDIRECT_URL = 'landingpage'
+
+CKEDITOR_CONFIGS = {
+'default': {
+    'toolbar': None, #You can change this based on your requirements.
+    'width': 'auto',
+
+          },
+    }

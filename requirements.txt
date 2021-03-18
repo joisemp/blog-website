@@ -1,1 +1,2 @@
-install Django : pip3 install Django
+install Django : pip3 install django
+install Ckeditor(Text editor) : pip3 install django-ckeditor
