@@ -17,7 +17,7 @@
     {% endif %}
 
     <br><small>Posted on - {{post.post_date}} at {{post.post_time}} </small><br>
-    {{post.body | truncatechars:9 | safe}} <br><br>  <!--{{value |truncatechars:9 }}truncate text excluding 9 character-->
+    {{post.body | truncatechars:30 | safe}} <br><br>  <!--{{value |truncatechars:9 }}truncate text excluding 9 character-->
 {% endfor %}
 </ul>
 

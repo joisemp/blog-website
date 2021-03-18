@@ -132,8 +132,32 @@ LOGOUT_REDIRECT_URL = 'landingpage'
 
 CKEDITOR_CONFIGS = {
 'default': {
-    'toolbar': None, #You can change this based on your requirements.
+    'toolbar': [
+            ['Styles', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Image', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar'],
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+            ['NumberedList','BulletedList'],
+            ['Maximize'],
+        ], #You can change this based on your requirements.
     'width': 'auto',
 
           },
     }
+
+'''
+
+default toolbar for text editor please add from this if needed
+
+['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Flash', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar'], ['Source'],
+            ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+            ['NumberedList','BulletedList'],
+            ['Indent','Outdent'],
+            ['Maximize'],
+
+'''
