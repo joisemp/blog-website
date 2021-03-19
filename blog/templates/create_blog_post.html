@@ -6,7 +6,7 @@
     <h1>Create Blog Post</h1>
 
     <br><br>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <div class="form-group">
         {% csrf_token %}
         {{form.media}}

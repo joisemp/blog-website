@@ -9,7 +9,7 @@ for item in category_choice:
 class CreatePostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'author', 'category', 'body')
+        fields = ('title', 'author', 'category', 'body', 'thumbnail')
         widgets = {
             'title':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Type your title'}),
             'author':forms.TextInput(attrs={'class':'form-control', 'value':'', 'id':'postCreator', 'type':'hidden'}), # This is the author input. The value is automatically entered useing javascript in the front end and the text box is hidden so that the user can't edit it.,

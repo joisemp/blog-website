@@ -12,6 +12,9 @@
     {% endif %}
 {% endif %}
 <hr>
+{% if post.thumbnail %}
+<img src="{{post.thumbnail.url}}" width="100%" alt=""><br><br>
+{% endif %}
 {{post.body | safe}}
 <br><br>
 <a class="btn btn-outline-secondary" href="{% url 'bloghome' %}">Back</a>
