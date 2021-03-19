@@ -133,10 +133,9 @@ LOGOUT_REDIRECT_URL = 'landingpage'
 CKEDITOR_CONFIGS = {
 'default': {
     'toolbar': [
-            ['Styles', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
-            ['Image', 'Table', 'HorizontalRule'],
+            ['Bold', 'Italic', 'Underline', 'SpellChecker', 'Undo', 'Redo'],
+            ['Image', 'HorizontalRule'],
             ['TextColor', 'BGColor'],
-            ['Smiley', 'SpecialChar'],
             ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
             ['NumberedList','BulletedList'],
             ['Maximize'],
