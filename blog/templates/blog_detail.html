@@ -37,6 +37,7 @@
     - {{ total_likes }} Likes
 </form>
 <br><br>
+<a href="{% url 'profile_page' post.author.profile.id %}">Profile Page</a>
 <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-md-2">
