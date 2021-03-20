@@ -1,0 +1,27 @@
+{% extends 'Navbars/base_nav.html' %}
+{% block title %}Edit Profile{%endblock%}
+{% block items %}
+
+{% if user.is_authenticated %}
+{% if user.id == profile.user.id %}
+    <h1>Edit Profile Page</h1>
+
+    <br><br>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-secondary">Update Profile</button>
+    </div>
+    </form>
+
+
+{% else %}
+    <h2>You don't have access to this page</h2>
+{% endif %}
+
+{% else %}
+    <h2>Please login to edit your Profile page</h2>
+{% endif %}
+
+{%endblock%}
