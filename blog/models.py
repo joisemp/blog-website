@@ -6,6 +6,8 @@ from ckeditor.fields import RichTextField
 from django.db.models.signals import pre_delete
 from django.dispatch.dispatcher import receiver
 
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
     def __str__(self):
@@ -14,6 +16,8 @@ class Category(models.Model):
     def get_absolute_url(self):
         #return reverse('blogdetail', args=(str(self.id)) # to return to the post created in detailview after clicking on post button
         return reverse('bloghome') # to return to the blog home page after clicking on post button
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
@@ -28,6 +32,11 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    def get_absolute_url(self):
+        return reverse('bloghome')
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class Post(models.Model): 
     title = models.CharField(max_length=255)
@@ -50,10 +59,13 @@ class Post(models.Model):
         #return reverse('blogdetail', args=(str(self.id)) # to return to the post created in detailview after clicking on post button
         return reverse('bloghome') # to return to the blog home page after clicking on post button
 
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class LandingPage(models.Model): 
     title = models.CharField(max_length=255)
     body = models.TextField()
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # to delete the image while deleting the post
 
@@ -61,3 +73,8 @@ class LandingPage(models.Model):
 def Post_delete(sender, instance, **kwargs):
     # Pass false so FileField doesn't save the model.
     instance.thumbnail.delete(False)
+
+@receiver(pre_delete, sender=Profile)
+def Post_delete(sender, instance, **kwargs):
+    # Pass false so FileField doesn't save the model.
+    instance.profile_pic.delete(False)
