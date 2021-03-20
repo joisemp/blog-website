@@ -15,6 +15,19 @@ class Category(models.Model):
         #return reverse('blogdetail', args=(str(self.id)) # to return to the post created in detailview after clicking on post button
         return reverse('bloghome') # to return to the blog home page after clicking on post button
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    profile_pic = models.ImageField(null=True, blank=True, upload_to='images/members/profile_pic')
+    website_url = models.CharField(max_length=255, null=True, blank=True)
+    instagram_url = models.CharField(max_length=255, null=True, blank=True)
+    facebook_url = models.CharField(max_length=255, null=True, blank=True)
+    twitter_url = models.CharField(max_length=255, null=True, blank=True)
+    linkedin_url = models.CharField(max_length=255, null=True, blank=True)
+    snapchat_url = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
 
 class Post(models.Model): 
     title = models.CharField(max_length=255)
@@ -25,7 +38,7 @@ class Post(models.Model):
     post_time = models.TimeField(auto_now_add=True)
     category = models.CharField(max_length=255, default='others')
     likes = models.ManyToManyField(User, related_name='blog_posts')
-    thumbnail = models.ImageField(null=True, blank=True, upload_to='images/thubnail')
+    thumbnail = models.ImageField(null=True, blank=True, upload_to='images/blog/thumbnail')
 
     def total_likes(self):
         return self.likes.count()

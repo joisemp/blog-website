@@ -1,4 +1,5 @@
 {% extends 'Navbars/blog_nav.html' %}
+{% load static %}
 {% block title %}{{ post.title }}{%endblock%}
 {% block items %}
 
@@ -35,5 +36,55 @@
     {% endif %}
     - {{ total_likes }} Likes
 </form>
+<br><br>
+<div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        {% if post.author.profile.profile_pic %}
+          <img src="{{post.author.profile.profile_pic.url}}" class="card-img" alt="...">
+        {% else %}
+          <img src="{% static 'Media/images/members/default/profile-pic.jpg' %}" class="card-img" alt="">
+        {% endif %}
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <p class="small text-muted">
 
+                {%if post.author.profile.facebook_url%}
+                    <a href="https://www.{{post.author.profile.facebook_url}}">Facebook</a> | 
+                {% endif %}
+
+
+                {%if post.author.profile.instagram_url%}
+                    <a href="https://www.{{post.author.profile.instagram_url}}">Instagram</a> | 
+                {% endif %}
+
+
+                {%if post.author.profile.website_url%}
+                    <a href="https://www.{{post.author.profile.website_url}}">Website</a> | 
+                {% endif %}
+
+
+                {%if post.author.profile.twitter_url%}
+                    <a href="https://www.{{post.author.profile.twitter_url}}">Twitter</a> | 
+                {% endif %}
+
+
+                {%if post.author.profile.linkedin_url%}
+                    <a href="https://www.{{post.author.profile.linkedin_url}}">Linkedin</a> | 
+                {% endif %}
+
+
+                {%if post.author.profile.snapchat_url%}
+                    <a href="https://www.{{post.author.profile.snapchat_url}}">Snapchat</a> | 
+                {% endif %}
+          </p>
+          <h5 class="card-title">{{ post.author.first_name }} {{ post.author.last_name }}</h5>
+          <p class="card-text">{{post.author.profile.bio}}.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<br><br>
 {%endblock%}
