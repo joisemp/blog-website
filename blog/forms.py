@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Category
+from .models import Comment, Post, Category
 
 category_choice = Category.objects.all().values_list('name', 'name')
 category_choice_list = []
@@ -27,4 +27,14 @@ class EditPostForm(forms.ModelForm):
             'title':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Type your title'}),
             # 'author':forms.Select(attrs={'class':'form-control'}), # we don't need to edit the author again and again so we don't need author field
             'body':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Type your blog here'}),            
+        }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'body') # author field is removed because we don't need it
+        widgets = {
+            'name':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Name'}),
+            'body':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Type your comment here'}),            
         }

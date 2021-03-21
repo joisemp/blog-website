@@ -1,8 +1,8 @@
 from blog.models import Post
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from .models import Category, Post, LandingPage
-from .forms import CreatePostForm, EditPostForm
+from .models import Category, Comment, Post, LandingPage
+from .forms import CreatePostForm, EditPostForm, CommentForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 #def blogHome(request):
@@ -82,3 +82,14 @@ def LikeView(request, pk):
         post.likes.add(request.user)
         liked = True
     return HttpResponseRedirect(reverse('blogdetail', args=[str(pk)]))
+
+
+class AddCommentView(CreateView):
+    model = Comment
+    form_class = CommentForm # we imported the form from forms.py file so using this instead of field because we not need those
+    template_name = 'add_comment.html'
+    success_url = reverse_lazy('bloghome')
+
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)

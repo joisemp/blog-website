@@ -1,0 +1,18 @@
+{% extends 'Navbars/base_nav.html' %}
+{% block title %}Comments{%endblock%}
+{% block items %}
+
+{% if user.is_authenticated %}
+    <h1>Add a comment</h1>
+    <br><br>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-secondary">Comment</button>
+    </div>
+    </form>
+{% else %}
+    <h2>Please login to Create a Post</h2>
+{% endif %}
+
+{%endblock%}
