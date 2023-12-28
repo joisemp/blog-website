@@ -1,10 +1,13 @@
 from django import forms
 from .models import Comment, Post, Category
 
-category_choice = Category.objects.all().values_list('name', 'name')
-category_choice_list = []
-for item in category_choice:
-    category_choice_list.append(item)
+try:
+    category_choice = Category.objects.all().values_list('name', 'name')
+    category_choice_list = []
+    for item in category_choice:
+        category_choice_list.append(item)
+except:
+    pass
 
 class CreatePostForm(forms.ModelForm):
     class Meta:
