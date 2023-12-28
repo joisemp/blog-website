@@ -62,7 +62,12 @@
                 <li><a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile</a></li>
                 {% endif %}
                 <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Settings</a></li>
-                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                <li class="dropdown-item">
+                  <form id="logout-form" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                  </form>
+                </li>
               </ul>
             </li>
         </ul>
